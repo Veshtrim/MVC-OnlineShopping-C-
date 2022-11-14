@@ -1,0 +1,101 @@
+﻿@model OnlineShopping.Models.ViewModels.ProductsListViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header  bg-info">
+            <h4 class="text-uppercase text-center text-white">Create Product</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="create">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductName" class="control-label text-white"></label>
+                            <input asp-for="ProductName" placeholder="Product Name" class="form-control" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductStock" class="control-label text-white"></label>
+                            <input asp-for="ProductStock" placeholder="Product Stock" class="form-control" />
+                            <span asp-validation-for="ProductStock" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductPrice" class="control-label text-white"></label>
+                            <input asp-for="ProductPrice" placeholder="Product Price" class="form-control" />
+                            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label asp-for="ProductCategory" class="control-label text-white"></label>
+                            <select asp-for="ProductCategory" class="form-control" asp-items="@ViewBag.ProductCategory"></select>
+                            <span asp-validation-for="ProductCategory" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductDescription" class="control-label text-white"></label>
+                            <input asp-for="ProductDescription" placeholder="Product Description" class="form-control" />
+                            <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label asp-for="ProductBrand" class="control-label text-white"></label>
+                            <select asp-for="ProductBrand" class="form-control" asp-items="@ViewBag.ProductBrand"></select>
+                            <span asp-validation-for="ProductBrand" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 m-0 m-auto">
+                        <div class="form-group">
+                            <label asp-for="ProductPhoto" class="control-label text-white pt-2"></label>
+                            <input asp-for="ProductPhoto" class="form-control" />
+                            <span asp-validation-for="ProductPhoto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group m-0 m-auto">
+                        <input type="submit" value="Create" class="btn btn-primary mb-1" />
+                        <a class="border border-secondary bg-secondary rounded ml-2 p-2 text-white text-decoration-none" asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script type="text/javascript">
+            // Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
+    }
+</body>
+</html>
